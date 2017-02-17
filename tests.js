@@ -14,7 +14,12 @@ QUnit.test( "Errors thrown for getAreaCode", function( assert ) {
     }, "Missing ')'. An error should have been thrown." );
 });
 
-QUnit.test( "A title for the test", function( assert ) {
+QUnit.test( "Errors thrown for getLineCode", function( assert ) {
     assert.throws( function() {
-        yourFunction(badInput);
-    }, "Message identifying the test succeeded in catching the error." );
+        getLineCode("(415)444-r555");
+    }, "Includes letter 'r'. An error should have been thrown." );
+
+    assert.throws( function() {
+        getLineCode("(415)444-55555");
+    }, "Length of String is greater then 4. An error should have been thrown." );
+});

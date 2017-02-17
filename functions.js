@@ -72,7 +72,7 @@ function getLineCode(phoneNum) {
     var lineCode;
 
     try {
-        lineCode = phoneNum.slice(9, 13);
+        lineCode = phoneNum.slice(9);
         if (lineCode.length == 4 && isNumeric(lineCode) == true) {
             return lineCode
         } else {
