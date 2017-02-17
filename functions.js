@@ -28,12 +28,13 @@ function between(string, start, end) {
  * @param   {string}  rawNumber input from user or other function
  * @returns {boolean} returns true or false is string is all numbers or not
  */
-function isNumeric(rawNumber) {
-    var cleanString = rawNumber.replace(/[()]/g,'');
-    if (!isNaN(cleanString) == true && (~cleanString.indexOf("e")) == false) {
+function isNumeric(number) {
+    if (!isNaN(number) == true && (~number.indexOf("e")) == false) {
         return true
     }
     else {
+        var audio = new Audio('error.mp3');
+        audio.play();
         return false;
     }
 }
