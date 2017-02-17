@@ -23,6 +23,16 @@ function between(string, start, end) {
     return string.slice(startAt, endAt);
 }
 
+function isNumeric(rawNumber) {
+    var cleanString = rawNumber.replace(/[()]/g,'');
+    if (!isNaN(parseInt(cleanString)) == true && isNaN(cleanString) == false && (~cleanString.indexOf("e")) == false) {
+        return true
+    }
+    else {
+        return false;
+    }
+}
+
 /**
  * Returns an area code from a phone Number: (###) ###-####
  * @param   {string} phoneNum The phone Number
@@ -36,7 +46,7 @@ function getAreaCode(phoneNum) {
     try {
         areaCode = between(phoneNum, "(", ")");
         areaCode = areaCode.trim();
-        if (areaCode.length == 3 && Number(areaCode)) {
+        if (areaCode.length == 3 && isNumeric(areaCode) == true) {
             return areaCode;
         } else {
             throw new Error("Invalid area code: " + areaCode);
@@ -51,7 +61,7 @@ function getLineCode(phoneNum) {
 
     try {
         lineCode = phoneNum.slice(9, 13);
-        if (lineCode.length == 4 && isNaN(lineCode) == true) {
+        if (lineCode.length == 4 && isNumeric(lineCode) == true) {
             return lineCode
         } else {
             throw new Error("Invalid line code: " + lineCode);
