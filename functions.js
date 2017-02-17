@@ -25,7 +25,7 @@ function between(string, start, end) {
 
 function isNumeric(rawNumber) {
     var cleanString = rawNumber.replace(/[()]/g,'');
-    if (!isNaN(parseInt(cleanString)) == true && isNaN(cleanString) == false && (~cleanString.indexOf("e")) == false) {
+    if (!isNaN(cleanString) == true && (~cleanString.indexOf("e")) == false) {
         return true
     }
     else {
